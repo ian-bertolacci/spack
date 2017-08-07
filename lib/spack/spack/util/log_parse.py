@@ -77,7 +77,7 @@ def parse_log_events(logfile, context=6):
         logfile (str): name of the build log to parse
         context (int): lines of context to extract around each log event
 
-    Currently looks for lines that contain the string 'error', ignoring case.
+    Currently looks for lines that contain the string 'error:', ignoring case.
 
     TODO: Extract warnings and other events from the build log.
     """
@@ -86,7 +86,7 @@ def parse_log_events(logfile, context=6):
 
     log_events = []
     for i, line in enumerate(lines):
-        if re.search('error', line, re.IGNORECASE):
+        if re.search('error:', line, re.IGNORECASE):
             event = LogEvent(
                 line.strip(),
                 i + 1,
