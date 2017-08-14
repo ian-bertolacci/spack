@@ -52,17 +52,6 @@ from spack.fetch_strategy import *
 ##########
 # Monkey-patching that is applied to all tests
 ##########
-
-
-@pytest.fixture(autouse=True)
-def no_stdin_duplication(monkeypatch):
-    """Duplicating stdin (or any other stream) returns an empty
-    StringIO object.
-    """
-    monkeypatch.setattr(llnl.util.lang, 'duplicate_stream',
-                        lambda x: StringIO())
-
-
 @pytest.fixture(autouse=True)
 def mock_fetch_cache(monkeypatch):
     """Substitutes spack.fetch_cache with a mock object that does nothing
