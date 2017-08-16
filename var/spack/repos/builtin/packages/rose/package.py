@@ -35,21 +35,18 @@ class Rose(AutotoolsPackage):
        (Developed at Lawrence Livermore National Lab)"""
 
     homepage = "http://rosecompiler.org/"
-    #url = "https://github.com/rose-compiler/rose/archive/v0.9.7.tar.gz"
 
-    version('0.9.7.0', commit='992c21ad06893bc1e9e7688afe0562eee0fda021',
-            git='https://github.com/rose-compiler/rose.git')
     version('0.9.9.0', commit='14d3ebdd7f83cbcc295e6ed45b45d2e9ed32b5ff',
+            git='https://github.com/rose-compiler/rose.git')
+    version('0.9.7.0', commit='992c21ad06893bc1e9e7688afe0562eee0fda021',
             git='https://github.com/rose-compiler/rose.git')
     version('develop', branch='master',
             git='https://github.com/rose-compiler/rose-develop.git')
-    version('__ROSE_VERSION__', commit='__ROSE_COMMIT__', git='rose-dev@rosecompiler1.llnl.gov:rose/scratch/rose.git')
- 
 
     depends_on("autoconf@2.69", type='build')
     depends_on("automake@1.14", type='build')
     depends_on("libtool@2.4", type='build')
-    depends_on("__BOOST_VERSION__")
+    depends_on("boost@1.61.0", type='build')
 
     variant('debug', default=False, description='Enable compiler debugging symbols')
     variant('optimized', default=False, description='Enable compiler optimizations')
